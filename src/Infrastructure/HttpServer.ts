@@ -5,10 +5,12 @@ import { UserController } from 'Api/Controllers/UserController'
 import express from 'express'
 import AppDataSource from './DataSource'
 import { error } from 'console'
+import { BookController } from 'Api/Controllers/BookController'
 
 
 export interface IControllers {
   user: UserController
+  book: BookController
 }
 
 export class HttpServer {
@@ -22,6 +24,10 @@ export class HttpServer {
     HttpServer.runDataSource();
 
     this.router.post('/users', this.toHandler(controllers.user.createUser.bind(controllers.user)))
+    this.router.get('/users', this.toHandler(controllers.user.getUsers.bind(controllers.user)))
+
+    this.router.post('/books', this.toHandler(controllers.book.createBook.bind(controllers.book)))
+    this.router.get('/books', this.toHandler(controllers.book.getBooks.bind(controllers.book)))
 
     this.app.use(bodyParser.json())
     this.app.use(this.router)

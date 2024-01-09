@@ -1,5 +1,4 @@
 export interface CreateBookRequest {
-    id: string;
     name: string;
 }
 

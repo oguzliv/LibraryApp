@@ -5,16 +5,16 @@ export abstract class BaseEntity {
     @PrimaryGeneratedColumn("uuid")
     id: string;
 
-    @Column()
+    @Column({select: false})
     createdAt: Date;
 
-    @Column({nullable: true})
+    @Column({nullable: true,select: false})
     createdBy: string;
 
-    @Column({nullable: true})
+    @Column({nullable: true,select: false})
     updatedAt: Date;
 
-    @Column({nullable: true})
+    @Column({nullable: true,select: false})
     updatedBy: string;
 
 }
