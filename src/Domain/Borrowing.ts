@@ -1,8 +1,9 @@
-import { Column, JoinColumn, ManyToOne } from "typeorm";
+import { Column, Entity, JoinColumn, ManyToOne } from "typeorm";
 import { User } from "./User";
 import { Book } from "./Book";
-
-export abstract class Borrowing {
+import { BaseEntity } from "./BaseEntity";
+@Entity()
+export class Borrowing extends BaseEntity{
 
     @Column()
     returnedAt: Date;
