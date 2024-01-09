@@ -1,18 +1,24 @@
-import AppDataSource from './Infrastructure/DataSource';
-import express, { Express, Request, Response , Application } from 'express';
+import AppDataSource from "Infrastructure/DataSource";
+import { UserController } from "../src/Api/Controllers/UserController";
+import { CreateUser } from "../src/Application/Usecases/Users/CreateUser"
+import {HttpServer} from '../src/Infrastructure/HttpServer'
 
-const app: Application = express();
-const port = process.env.PORT || 8000;
+void main()
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Welcome to Express & TypeScript Server');
-});
+async function main() {
+  // infra
+  
+  // repositories
 
-AppDataSource.initialize()
-  .then(async () => {
-    app.listen(port, () => {
-      console.log("Server is running on http://localhost:" + port);
-    });
-    console.log("Data Source has been initialized!");
-  })
-  .catch((error) => console.log(error));
+  // network apis
+
+  // use cases
+  const createUserUseCase  = new CreateUser();
+
+  // controllers
+  const userController = new UserController(createUserUseCase)
+
+  const httpServer = new HttpServer({ user: userController })
+
+  await httpServer.start(8080)
+}

@@ -9,5 +9,4 @@ export class User extends BaseEntity {
 
     @OneToMany(() => Borrowing, borrowing => borrowing.user)
     borrowings: Borrowing[];
-    
 }

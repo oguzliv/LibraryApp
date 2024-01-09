@@ -2,9 +2,9 @@ import "reflect-metadata";
 import { DataSource } from "typeorm";
 
 import * as dotenv from "dotenv";
-import { Book } from "../Domain/Book";
-import { User } from "../Domain/User";
-import { Borrowing } from "../Domain/Borrowing";
+import { Book } from "../Domain/Entity/Book";
+import { User } from "../Domain/Entity/User";
+import { Borrowing } from "../Domain/Entity/Borrowing";
 
 const config = dotenv.config();
 
@@ -23,7 +23,7 @@ const AppDataSource = new DataSource({
   database: "LibraryDB",
   synchronize: true,
   logging: true,
-  entities: [Book,User,Borrowing],
+  entities: [User, Book, Borrowing],
   migrations: [__dirname + "/migration/*.ts"],
   subscribers: [],
 });

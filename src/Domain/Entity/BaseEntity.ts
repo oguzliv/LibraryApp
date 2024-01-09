@@ -2,19 +2,19 @@ import { Column, PrimaryGeneratedColumn } from "typeorm";
 
 export abstract class BaseEntity {
 
-    @PrimaryGeneratedColumn()
+    @PrimaryGeneratedColumn("uuid")
     id: string;
 
     @Column()
     createdAt: Date;
 
-    @Column()
+    @Column({nullable: true})
     createdBy: string;
 
-    @Column()
+    @Column({nullable: true})
     updatedAt: Date;
 
-    @Column()
+    @Column({nullable: true})
     updatedBy: string;
 
 }
