@@ -1,5 +1,6 @@
 # LibraryApp
-This is a simpel Library App emulates borrowing and returning books from it
+This is a simplE Library App emulates borrowing and returning books from it.
+Application is architected according to Clean Architecture (Ports § Adapters)
 ## Technology used:
 * Node.js
 * Postgresql
