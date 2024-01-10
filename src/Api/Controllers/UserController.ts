@@ -4,6 +4,7 @@ import { GetUsers } from '../../Application/Usecases/Users/GetUsers'
 
 interface IControllerRequest {
   body: Record<string, unknown>
+  params: Record<string, unknown>
 }
 
 interface IControllerResponse {
@@ -29,7 +30,6 @@ export class UserController {
 
   public async getUsers(req: IControllerRequest): Promise<IControllerResponse> {
 
-    // const createUserData = UserValidator.validateCreateUser(req.body)
     const users = await this.getUsersUseCase.execute({});
 
     return {

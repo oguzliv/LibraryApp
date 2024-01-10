@@ -1,6 +1,5 @@
 import { IUseCase } from "Application/Common/IUseCase";
 import { User } from "../../../Domain/Entity/User";
-import { CreateUserRequest, CreateUserResponse, GetUsersResponse } from "../../../Domain/Model/UserModels";
 import AppDataSource from "../../../Infrastructure/DataSource";
 import { Repository } from "typeorm";
 

@@ -7,7 +7,7 @@ export interface CreateBookResponse {
 }
 
 export interface BookResponse {
-    id: string;
+    id: number;
     name: string;
 }
 
@@ -16,5 +16,9 @@ export interface GetBooksResponse {
 }
 
 export interface GetBookDetailsResponse extends BookResponse {
-    score: string;
+    score: any;
+}
+
+export interface GetBookByIdRequest {
+    id: number;
 }

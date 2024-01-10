@@ -8,6 +8,7 @@ import { BookController } from "../src/Api/Controllers/BookController";
 import { BorrowingController } from "../src/Api/Controllers/BorrowingController";
 import { BorrowBook } from "../src/Application/Usecases/Borrowing/BorrowBook";
 import { ReturnBook } from "../src/Application/Usecases/Borrowing/ReturnBook";
+import { GetBookById } from "../src/Application/Usecases/Books/GetBookById";
 
 void main()
 
@@ -24,13 +25,14 @@ async function main() {
 
   const createBookUseCase = new CreateBook();
   const getBooksUseCase = new GetBooks();
+  const getBookByIdUseCase = new GetBookById();
 
   const borrowBookUseCase = new BorrowBook();
   const returnBookUseCase = new ReturnBook();
 
   // controllers
   const userController = new UserController(createUserUseCase,getUsersUseCase);
-  const bookController = new BookController(createBookUseCase,getBooksUseCase);
+  const bookController = new BookController(createBookUseCase,getBooksUseCase,getBookByIdUseCase);
   const borrowingController = new BorrowingController(borrowBookUseCase,returnBookUseCase);
 
   const httpServer = new HttpServer({ user: userController , book: bookController, borrow: borrowingController});

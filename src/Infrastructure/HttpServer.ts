@@ -30,6 +30,7 @@ export class HttpServer {
 
     this.router.post('/books', this.toHandler(controllers.book.createBook.bind(controllers.book)))
     this.router.get('/books', this.toHandler(controllers.book.getBooks.bind(controllers.book)))
+    this.router.get('/books/:id', this.toHandler(controllers.book.getBookById.bind(controllers.book)))
 
     this.router.post('/users/:userid/borrow/:bookid',this.toHandler(controllers.borrow.borrowBook.bind(controllers.borrow)))
     this.router.post('/users/:userid/return/:bookid',this.toHandler(controllers.borrow.returnBook.bind(controllers.borrow)))
