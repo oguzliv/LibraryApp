@@ -14,11 +14,6 @@ import { GetUserById } from "../src/Application/Usecases/Users/GetUserById";
 void main()
 
 async function main() {
-  // infra
-
-  // repositories
-
-  // network apis
 
   // use cases
   const createUserUseCase  = new CreateUser();

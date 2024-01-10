@@ -19,7 +19,7 @@ const AppDataSource = new DataSource({
   host: "localhost",
   port: parseInt("5432"),
   username: "postgres",
-  password: "Liv413_*",
+  password: "",
   database: "LibraryDB",
   synchronize: true,
   logging: false,
@@ -29,11 +29,3 @@ const AppDataSource = new DataSource({
 });
 
 export default AppDataSource;
-
-// DB_HOST = localhost
-// DB_PORT = 5432
-// DB_USERNAME = postgres
-// DB_PASSWORD = Liv413_*
-// DB_DATABASE = LibraryDB
-
-// npx typeorm-ts-node-commonjs -d ./src/Infrastructure/DataSource.ts migration:generate ./src/Infrastructure/Migrations
