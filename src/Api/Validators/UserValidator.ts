@@ -1,4 +1,4 @@
-import { CreateUserRequest } from 'Domain/Model/UserModels'
+import { CreateUserRequest, GetUserByIdRequest } from 'Domain/Model/UserModels'
 
 export class UserValidator {
   public static validateCreateUser(payload: Record<string, unknown>): CreateUserRequest {
@@ -9,5 +9,16 @@ export class UserValidator {
     return {
       name: payload.name
     }
+  }
+
+  public static validateGetUserById(params: Record<string,unknown>) : GetUserByIdRequest {
+
+    if (typeof parseInt(params.id as string) !== 'number') {
+        throw new Error('validation error')
+      }
+  
+      return {
+        id: parseInt(params.id as string)
+      }
   }
 }

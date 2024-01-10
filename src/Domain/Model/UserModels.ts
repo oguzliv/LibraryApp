@@ -7,7 +7,7 @@ export interface CreateUserResponse {
 }
 
 export interface UserResponse {
-    id: string;
+    id: number;
     name: string;
 }
 
@@ -24,9 +24,13 @@ export interface GetUsersResponse {
     data:UserResponse[]
 }
 
-export interface UserDetailsResponse {
+export interface UserDetailsResponse extends UserResponse {
     books:{
         past:PastBook[],
         present:PresentBook[]
     }
+}
+
+export interface GetUserByIdRequest {
+    id: number;
 }

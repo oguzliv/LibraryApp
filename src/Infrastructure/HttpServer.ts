@@ -27,6 +27,7 @@ export class HttpServer {
 
     this.router.post('/users', this.toHandler(controllers.user.createUser.bind(controllers.user)))
     this.router.get('/users', this.toHandler(controllers.user.getUsers.bind(controllers.user)))
+    this.router.get('/users/:id', this.toHandler(controllers.user.getUserById.bind(controllers.user)))
 
     this.router.post('/books', this.toHandler(controllers.book.createBook.bind(controllers.book)))
     this.router.get('/books', this.toHandler(controllers.book.getBooks.bind(controllers.book)))
