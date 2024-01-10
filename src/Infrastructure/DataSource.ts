@@ -22,7 +22,7 @@ const AppDataSource = new DataSource({
   password: "Liv413_*",
   database: "LibraryDB",
   synchronize: true,
-  logging: true,
+  logging: false,
   entities: [User, Book, Borrowing],
   migrations: [__dirname + "/migration/*.ts"],
   subscribers: [],

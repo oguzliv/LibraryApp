@@ -28,14 +28,13 @@ export class BorrowingController {
     }
   }
 
-//   public async returnBook(req: IControllerRequest): Promise<IControllerResponse> {
+  public async returnBook(req: IControllerRequest): Promise<IControllerResponse> {
+    const returnBookData = BorrowValidator.validateReturnBook(req.params,req.body)
+    const returnBookOutputData = await this.returnBookUseCase.execute(returnBookData)
 
-//     // const createUserData = UserValidator.validateCreateUser(req.body)
-//     const users = await this.getUsersUseCase.execute({});
 
-//     return {
-//       status: 200,
-//       body: users
-//     }
-//   }
+    return {
+        status: returnBookOutputData ? 200 : 500
+    }
+  }
 }

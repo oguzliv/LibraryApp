@@ -1,6 +1,5 @@
 import { IUseCase } from "Application/Common/IUseCase";
 import { User } from "../../../Domain/Entity/User";
-import { CreateUserRequest, CreateUserResponse } from "../../../Domain/Model/UserModels";
 import AppDataSource from "../../../Infrastructure/DataSource";
 import { Borrowing } from "../../../Domain/Entity/Borrowing";
 import { Book } from "../../../Domain/Entity/Book";
@@ -39,12 +38,22 @@ export class BorrowBook implements IUseCase<BorrowBookRequest,boolean>{
             
             return true;
         }else{
-            const borrowedBook = await this.borrowRepository.find({
-                where: {
-                    returned : false,
-                     user: { id: data.userId } ,
-                       book: { id: data.bookId } ,
-                }
+            const borrowedBook = await this.borrowRepository.findOne({
+                where: 
+                    [
+                        {
+                            returned : false,
+                            user: { id: data.userId } ,
+                            book: { id: data.bookId } ,
+                        },
+                        {
+                            returned : false,
+
+                            book: { id: data.bookId } ,
+                        }
+                        
+                    ]
+                
             });
             if(borrowedBook) throw new Error("Book is not available to user!");
     

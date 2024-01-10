@@ -32,6 +32,7 @@ export class HttpServer {
     this.router.get('/books', this.toHandler(controllers.book.getBooks.bind(controllers.book)))
 
     this.router.post('/users/:userid/borrow/:bookid',this.toHandler(controllers.borrow.borrowBook.bind(controllers.borrow)))
+    this.router.post('/users/:userid/return/:bookid',this.toHandler(controllers.borrow.returnBook.bind(controllers.borrow)))
 
     this.app.use(bodyParser.json())
     this.app.use(this.router)
