@@ -1,5 +1,6 @@
 export interface BorrowBookRequest {
-
+    userId:number;
+    bookId:number;
 }
 
 export interface BorrowBookResponse {

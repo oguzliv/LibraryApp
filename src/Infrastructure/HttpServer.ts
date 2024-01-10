@@ -6,11 +6,13 @@ import express from 'express'
 import AppDataSource from './DataSource'
 import { error } from 'console'
 import { BookController } from 'Api/Controllers/BookController'
+import { BorrowingController } from 'Api/Controllers/BorrowingController'
 
 
 export interface IControllers {
   user: UserController
   book: BookController
+  borrow: BorrowingController
 }
 
 export class HttpServer {
@@ -28,6 +30,8 @@ export class HttpServer {
 
     this.router.post('/books', this.toHandler(controllers.book.createBook.bind(controllers.book)))
     this.router.get('/books', this.toHandler(controllers.book.getBooks.bind(controllers.book)))
+
+    this.router.post('/users/:userid/borrow/:bookid',this.toHandler(controllers.borrow.borrowBook.bind(controllers.borrow)))
 
     this.app.use(bodyParser.json())
     this.app.use(this.router)

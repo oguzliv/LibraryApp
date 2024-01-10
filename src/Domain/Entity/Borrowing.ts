@@ -5,14 +5,14 @@ import { BaseEntity } from "./BaseEntity";
 @Entity()
 export class Borrowing extends BaseEntity{
 
-    @Column()
+    @Column({select: false,nullable: true})
     returnedAt: Date;
 
-    @Column()
+    @Column({select:false,nullable: true})
     borrowedAt: Date;
 
-    @Column()
-    updatedBy: string;
+    @Column({select:false})
+    returned: boolean
 
     @ManyToOne(() => User, user => user.borrowings)
     @JoinColumn({ name: 'UserId' })

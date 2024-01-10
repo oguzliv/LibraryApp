@@ -2,8 +2,8 @@ import { Column, PrimaryGeneratedColumn } from "typeorm";
 
 export abstract class BaseEntity {
 
-    @PrimaryGeneratedColumn("uuid")
-    id: string;
+    @PrimaryGeneratedColumn()
+    id: number;
 
     @Column({select: false})
     createdAt: Date;
