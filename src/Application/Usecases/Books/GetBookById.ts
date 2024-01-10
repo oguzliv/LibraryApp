@@ -12,15 +12,6 @@ export class GetBookById implements IUseCase<GetBookByIdRequest,GetBookDetailsRe
     }
     public async execute(data : GetBookByIdRequest): Promise<GetBookDetailsResponse> {
 
-        console.log(data);
-        // try{
-        //     const book = await this.bookRepository.findOne({
-        //         where: {id: data.id},
-        //         select: ['id','name','score']
-        //     });
-        // }catch(error){
-        //     console.error(error);
-        // }
         const book = await this.bookRepository.findOne({
             where: {id: data.id},
             select: ['id','name','score']
